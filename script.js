@@ -22,8 +22,12 @@ function flavorsOrdered(arrayOrders) {
   for (let i = 0; i < arrayOrders.length; i++) {
     // we need it to log flavors as keys and
     // qty of times counted as value.
-    orderTotals[arrayOrders[i]] = 1;
-    
+    let currentItem = arrayOrders[i];
+    if (orderTotals[currentItem] === undefined) {
+      orderTotals[currentItem] = 1;
+    } else {
+      orderTotals[currentItem]++;
+    }
   }
   return orderTotals;
 }
