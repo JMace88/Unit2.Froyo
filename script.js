@@ -9,27 +9,28 @@
 // console output changes based on user input
 // flavors - vanilla,vanilla,vanilla,strawberry,coffee,coffee
 
-// created prompt for customer
-let input = prompt('List your order with each flavor separated by a comma.');
-// taken cust. input and put it into our array.
+const button = document.querySelector('button');
 
-let customerOrder = input.split(',');
-
-console.log(customerOrder);
+button.addEventListener('click', function () {
+  let input = prompt(
+    'List your order with each flavor separated by a comma.'
+    );
+  let customerOrder = input.split(',');
+  console.log(customerOrder);
+  console.table(flavorsOrdered(customerOrder));
+});
 
 function flavorsOrdered(arrayOrders) {
   const orderTotals = {};
   for (let i = 0; i < arrayOrders.length; i++) {
     // we need it to log flavors as keys and
     // qty of times counted as value.
-    let currentItem = arrayOrders[i];
-    if (orderTotals[currentItem] === undefined) {
-      orderTotals[currentItem] = 1;
+    let currentFlavor = arrayOrders[i];
+    if (orderTotals[currentFlavor] === undefined) {
+      orderTotals[currentFlavor] = 1;
     } else {
-      orderTotals[currentItem]++;
+      orderTotals[currentFlavor]++;
     }
   }
   return orderTotals;
 }
-// key = flavor, value = qty ordered
-console.table(flavorsOrdered(customerOrder));
